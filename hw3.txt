@@ -1,0 +1,24 @@
+MacBook-Air-Kirill:Linux kirillkantur$ vim hello.py
+MacBook-Air-Kirill:Linux kirillkantur$ ls
+README.md	hello.py	hello_vim1.png	hello_vim2.png
+MacBook-Air-Kirill:Linux kirillkantur$ wc -l hello.py
+       1 hello.py
+MacBook-Air-Kirill:Linux kirillkantur$ cat hello.py | wc -l
+       1
+MacBook-Air-Kirill:Linux kirillkantur$ nano linear.py
+MacBook-Air-Kirill:Linux kirillkantur$ ls
+README.md		hello_vim1.png		linear_nano1.png
+hello.py		hello_vim2.png
+MacBook-Air-Kirill:Linux kirillkantur$ vim linear.py
+MacBook-Air-Kirill:Linux kirillkantur$ ls
+README.md		hello_vim1.png		linear.py
+hello.py		hello_vim2.png		linear_nano1.png
+MacBook-Air-Kirill:Linux kirillkantur$ cat hello.py linear.py
+print('Hello world!')
+print('Linear regression')
+MacBook-Air-Kirill:Linux kirillkantur$ cat hello.py linear.py > result.py
+MacBook-Air-Kirill:Linux kirillkantur$ ls
+README.md		hello_vim2.png		result.py
+hello.py		linear.py
+hello_vim1.png		linear_nano1.png
+
