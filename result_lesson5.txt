@@ -1,0 +1,120 @@
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py
+ubuntu@ip-172-31-45-211:~$ su user_new
+Password: 
+user_new@ip-172-31-45-211:/home/ubuntu$ cd ~
+user_new@ip-172-31-45-211:~$ ls
+numbers.py
+user_new@ip-172-31-45-211:~$ vim numbers.py 
+user_new@ip-172-31-45-211:~$ htop
+user_new@ip-172-31-45-211:~$ numbers.py
+numbers.py: command not found
+user_new@ip-172-31-45-211:~$ ls
+numbers.py
+user_new@ip-172-31-45-211:~$ numbers.py
+numbers.py: command not found
+user_new@ip-172-31-45-211:~$ python3 numbers.py
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+^Z
+[1]+  Stopped                 python3 numbers.py
+user_new@ip-172-31-45-211:~$ htop
+user_new@ip-172-31-45-211:~$ find *.py
+numbers.py
+user_new@ip-172-31-45-211:~$ su ubuntu
+Password: 
+su: Authentication failure
+user_new@ip-172-31-45-211:~$ exit
+exit
+There are stopped jobs.
+user_new@ip-172-31-45-211:~$ exit
+exit
+ubuntu@ip-172-31-45-211:~$ htop
+ubuntu@ip-172-31-45-211:~$ su user_new
+Password: 
+user_new@ip-172-31-45-211:/home/ubuntu$ cd ~
+user_new@ip-172-31-45-211:~$ python3
+Python 3.8.2 (default, Jul 16 2020, 14:00:26) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>     
+[1]+  Stopped                 python3
+user_new@ip-172-31-45-211:~$ exit
+exit
+There are stopped jobs.
+user_new@ip-172-31-45-211:~$ python3 numbers.py > /dev/null &
+[2] 22395
+user_new@ip-172-31-45-211:~$ htop
+user_new@ip-172-31-45-211:~$ exit
+exit
+There are stopped jobs.
+user_new@ip-172-31-45-211:~$ python3 numbers > /dev/null&
+[3] 22397
+user_new@ip-172-31-45-211:~$ python3: can't open file 'numbers': [Errno 2] No such file or directory
+exit
+exit
+ubuntu@ip-172-31-45-211:~$ htop
+ubuntu@ip-172-31-45-211:~$ su user_new
+Password: 
+user_new@ip-172-31-45-211:/home/ubuntu$ cd ~
+user_new@ip-172-31-45-211:~$ python3 numbers.py > /dev/null&
+[1] 22409
+user_new@ip-172-31-45-211:~$ htop
+user_new@ip-172-31-45-211:~$ exit
+exit
+ubuntu@ip-172-31-45-211:~$ su user_new
+Password: 
+user_new@ip-172-31-45-211:/home/ubuntu$ cd ~
+user_new@ip-172-31-45-211:~$ jobs
+user_new@ip-172-31-45-211:~$ python3 numbers.py > numbers.log
+jobs
+^Z
+[1]+  Stopped                 python3 numbers.py > numbers.log
+user_new@ip-172-31-45-211:~$ jobs
+[1]+  Stopped                 python3 numbers.py > numbers.log
+user_new@ip-172-31-45-211:~$ ls
+numbers.log  numbers.py
+user_new@ip-172-31-45-211:~$ cat numbers.log
+user_new@ip-172-31-45-211:~$ vim numbers.log
+
+/bin/bash: q: command not found
+
+shell returned 127
+
+Press ENTER or type command to continue
+user_new@ip-172-31-45-211:~$ ls -l
+total 4
+-rw-rw-r-- 1 user_new user_new  0 Jul 30 09:14 numbers.log
+-rwxrwxr-x 1 user_new user_new 87 Jul 30 08:33 numbers.py
+user_new@ip-172-31-45-211:~$ numbers.py
+numbers.py: command not found
+user_new@ip-172-31-45-211:~$ python3 numbers.py > numbers.log
+^Z
+[2]+  Stopped                 python3 numbers.py > numbers.log
+user_new@ip-172-31-45-211:~$ jobs
+[1]-  Stopped                 python3 numbers.py > numbers.log
+[2]+  Stopped                 python3 numbers.py > numbers.log
+user_new@ip-172-31-45-211:~$ htop
+user_new@ip-172-31-45-211:~$ cat numbers.log
+user_new@ip-172-31-45-211:~$ exit 
+exit
+There are stopped jobs.
+user_new@ip-172-31-45-211:~$ exit
+exit
+ubuntu@ip-172-31-45-211:~$ exit
+
