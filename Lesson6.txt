@@ -1,0 +1,174 @@
+
+Last login: Tue Aug  4 14:29:21 2020 from 46.188.122.123
+ubuntu@ip-172-31-21-36:~$ ls /
+bin   data  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev   home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+ubuntu@ip-172-31-21-36:~$ sudo mount /dev/xvdf
+mount: /dev/xvdf: can't find in /etc/fstab.
+ubuntu@ip-172-31-21-36:~$ ls /
+bin   data  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev   home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+ubuntu@ip-172-31-21-36:~$ sudo mount /dev/xvdf /data
+mount: /data: special device /dev/xvdf does not exist.
+ubuntu@ip-172-31-21-36:~$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0   18M  1 loop /snap/amazon-ssm-agent/1566
+loop1     7:1    0 28.1M  1 loop /snap/amazon-ssm-agent/2012
+loop2     7:2    0   97M  1 loop /snap/core/9289
+loop3     7:3    0   97M  1 loop /snap/core/9665
+loop4     7:4    0   55M  1 loop /snap/core18/1754
+loop5     7:5    0   55M  1 loop /snap/core18/1880
+loop6     7:6    0 71.3M  1 loop /snap/lxd/16100
+loop7     7:7    0 71.5M  1 loop /snap/lxd/16530
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+ubuntu@ip-172-31-21-36:~$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0   18M  1 loop /snap/amazon-ssm-agent/1566
+loop1     7:1    0 28.1M  1 loop /snap/amazon-ssm-agent/2012
+loop2     7:2    0   97M  1 loop /snap/core/9289
+loop3     7:3    0   97M  1 loop /snap/core/9665
+loop4     7:4    0   55M  1 loop /snap/core18/1754
+loop5     7:5    0   55M  1 loop /snap/core18/1880
+loop6     7:6    0 71.3M  1 loop /snap/lxd/16100
+loop7     7:7    0 71.5M  1 loop /snap/lxd/16530
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    2G  0 disk 
+ubuntu@ip-172-31-21-36:~$ sudo mount /dev/xvdf /data
+ubuntu@ip-172-31-21-36:~$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0   18M  1 loop /snap/amazon-ssm-agent/1566
+loop1     7:1    0 28.1M  1 loop /snap/amazon-ssm-agent/2012
+loop2     7:2    0   97M  1 loop /snap/core/9289
+loop3     7:3    0   97M  1 loop /snap/core/9665
+loop4     7:4    0   55M  1 loop /snap/core18/1754
+loop5     7:5    0   55M  1 loop /snap/core18/1880
+loop6     7:6    0 71.3M  1 loop /snap/lxd/16100
+loop7     7:7    0 71.5M  1 loop /snap/lxd/16530
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    2G  0 disk /data
+ubuntu@ip-172-31-21-36:~$ ls /
+bin   data  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev   home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+ubuntu@ip-172-31-21-36:~$ cd /data/
+ubuntu@ip-172-31-21-36:/data$ ls
+test.txt
+ubuntu@ip-172-31-21-36:/data$ ls -la
+total 8
+drwxr-xrwx  2 root   root     22 Aug  3 12:09 .
+drwxr-xr-x 20 root   root   4096 Aug  4 12:39 ..
+-rw-rw-r--  1 ubuntu ubuntu    5 Aug  3 12:12 test.txt
+ubuntu@ip-172-31-21-36:/data$ cd ~
+ubuntu@ip-172-31-21-36:~$ sudo chmod o+w /data
+ubuntu@ip-172-31-21-36:~$ ls -la /data/
+total 8
+drwxr-xrwx  2 root   root     22 Aug  3 12:09 .
+drwxr-xr-x 20 root   root   4096 Aug  4 12:39 ..
+-rw-rw-r--  1 ubuntu ubuntu    5 Aug  3 12:12 test.txt
+ubuntu@ip-172-31-21-36:~$ cd /data/
+ubuntu@ip-172-31-21-36:/data$ vim test.txt
+ubuntu@ip-172-31-21-36:/data$ cat /etc/fstab
+LABEL=cloudimg-rootfs	/	 ext4	defaults,discard	0 0
+UUID="45836554-1956-47d6-b825-dc42ae0c9dd3" /data xfs defaults,nofail 0 2 
+ubuntu@ip-172-31-21-36:/data$ Connection to ec2-3-16-167-79.us-east-2.compute.amazonaws.com closed by remote host.
+Connection to ec2-3-16-167-79.us-east-2.compute.amazonaws.com closed.
+MacBook-Air-Kirill:Documents kirillkantur$ ssh -i "aws_Tanya_key.pem" ubuntu@ec2-3-16-167-79.us-east-2.compute.amazonaws.com
+
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-1021-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ System information disabled due to load higher than 1.0
+
+ * Are you ready for Kubernetes 1.19? It's nearly here! Try RC3 with
+   sudo snap install microk8s --channel=1.19/candidate --classic
+
+   https://www.microk8s.io/ has docs and details.
+
+58 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run: apt list --upgradable
+
+
+Last login: Tue Aug  4 14:36:06 2020 from 46.188.122.123
+ubuntu@ip-172-31-21-36:~$ 
+ubuntu@ip-172-31-21-36:~$ ls /
+bin   data  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev   home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+ubuntu@ip-172-31-21-36:~$ cd /data/
+ubuntu@ip-172-31-21-36:/data$ ls
+test.txt
+ubuntu@ip-172-31-21-36:/data$ cd ~
+ubuntu@ip-172-31-21-36:~$ sudo umount /data
+ubuntu@ip-172-31-21-36:~$ exit
+logout
+Connection to ec2-3-16-167-79.us-east-2.compute.amazonaws.com closed.
+MacBook-Air-Kirill:Documents kirillkantur$ ssh -i "aws_Tanya_key.pem" ubuntu@ec2-18-222-132-137.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-18-222-132-137.us-east-2.compute.amazonaws.com (18.222.132.137)' can't be established.
+ECDSA key fingerprint is SHA256:s3uHEZTuFToDdOXCXGDQa0XApgtvQ9QwX65oexVDThg.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-18-222-132-137.us-east-2.compute.amazonaws.com,18.222.132.137' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-1018-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue Aug  4 15:30:32 UTC 2020
+
+  System load:  0.36              Processes:             101
+  Usage of /:   16.7% of 7.69GB   Users logged in:       0
+  Memory usage: 20%               IPv4 address for eth0: 172.31.30.4
+  Swap usage:   0%
+
+0 updates can be installed immediately.
+0 of these updates are security updates.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-30-4:~$ ls /
+bin   dev  home  lib32  libx32      media  opt   root  sbin  srv  tmp  var
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  sys  usr
+ubuntu@ip-172-31-30-4:~$ blkid
+/dev/xvda1: LABEL="cloudimg-rootfs" UUID="9451d968-8716-47ca-84d5-68b5c79f61e8" TYPE="ext4" PARTUUID="15e6b846-01"
+ubuntu@ip-172-31-30-4:~$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0   97M  1 loop /snap/core/9665
+loop1     7:1    0   55M  1 loop /snap/core18/1880
+loop2     7:2    0 71.3M  1 loop /snap/lxd/16100
+loop3     7:3    0 28.1M  1 loop /snap/amazon-ssm-agent/2012
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    2G  0 disk 
+ubuntu@ip-172-31-30-4:~$ sudo file -s /dev/xvdf
+/dev/xvdf: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
+ubuntu@ip-172-31-30-4:~$ sudo mkdir /data1
+ubuntu@ip-172-31-30-4:~$ ls /
+bin   data1  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  dev    home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+ubuntu@ip-172-31-30-4:~$ sudo mount /dev/xvdf /data1
+ubuntu@ip-172-31-30-4:~$ cd /data1/
+ubuntu@ip-172-31-30-4:/data1$ ls
+test.txt
+ubuntu@ip-172-31-30-4:/data1$ cat test.txt 
+test
+test2
+ubuntu@ip-172-31-30-4:/data1$ 
+

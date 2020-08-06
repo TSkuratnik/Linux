@@ -1,0 +1,47 @@
+Last login: Mon Aug  3 10:56:21 2020 from 46.188.122.123
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py
+ubuntu@ip-172-31-45-211:~$ echo test1.py
+test1.py
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py
+ubuntu@ip-172-31-45-211:~$ touch test.py
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py  test.py
+ubuntu@ip-172-31-45-211:~$ touch test2.py
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py  test.py  test2.py
+ubuntu@ip-172-31-45-211:~$ touch test3.txt
+ubuntu@ip-172-31-45-211:~$ ls
+hello.py  test.py  test2.py  test3.txt
+ubuntu@ip-172-31-45-211:~$ ls | grep '^t.*py$'
+test.py
+test2.py
+ubuntu@ip-172-31-45-211:~$ ls | grep '^t.*.py$'
+test.py
+test2.py
+ubuntu@ip-172-31-45-211:~$ ls | cat '^t.*.py$'
+cat: '^t.*.py$': No such file or directory
+ubuntu@ip-172-31-45-211:~$ ls | grep '^t.*.py$' | cat
+test.py
+test2.py
+ubuntu@ip-172-31-45-211:~$ cat *.py
+print('Never look back!')
+ubuntu@ip-172-31-45-211:~$ vim hello.py 
+ubuntu@ip-172-31-45-211:~$ vim test.py
+ubuntu@ip-172-31-45-211:~$ cat *.py
+print('Never look back!')
+a = 9
+print(a)
+b = 7
+print(b)
+ubuntu@ip-172-31-45-211:~$ cat *.py | grep '^print.*'
+print('Never look back!')
+print(a)
+print(b)
+ubuntu@ip-172-31-45-211:~$ uptime
+ 10:17:00 up 10 days, 13:41,  1 user,  load average: 0.00, 0.00, 0.00
+ubuntu@ip-172-31-45-211:~$ uptime | sed 's/.* \([0-9]\+\) days.*/\1/'
+10
+ubuntu@ip-172-31-45-211:~$ 
+
